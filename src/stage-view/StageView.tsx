@@ -154,7 +154,9 @@ export default function StageView({content}: { content: {} }) {
       }
     } as any
 
-    myContext.loaded = true
+    setTimeout(() => {
+      myContext.loaded = true
+    })
   }, [content])
 
   observe(NS_Emits.Debug, {from: 'children', expectTo: 'children'})

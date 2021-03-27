@@ -59,6 +59,7 @@ function RenderPanel() {
 
   useComputed(() => {
     if (myCtx.show) {
+      const optionlibs: { id: string; comAray: any; }[] = []
       myCtx.context.comLibAry.forEach(lib => {
         if (!lib.id) {
           lib.id = uuid()
@@ -69,22 +70,28 @@ function RenderPanel() {
           if (curModule.slot.state.isEnabled()) {
             if (lib.comAray.find(comDef => !comDef.rtType || comDef.rtType.match(/vue|react/gi))) {
               lib._visible = true
+              optionlibs.push(lib)
             } else {
               lib._visible = false
             }
           } else {
             if (lib.comAray.find(comDef => comDef.rtType&&comDef.rtType.match(/js/gi))) {
+              optionlibs.push(lib)
               lib._visible = true
             } else {
               lib._visible = false
             }
           }
-          if (lib._visible &&
-            (!myCtx.activeLib || !myCtx.activeLib._visible)) {
-            myCtx.activeLib = lib
-          }
+          // if (lib._visible &&
+          //   (!myCtx.activeLib || !myCtx.activeLib._visible)) {
+          //   myCtx.activeLib = lib
+          // }
         }
       })
+      const activeLib = optionlibs.find(lib => lib.id === myCtx.activeLib?.id)
+      if (!activeLib) {
+        myCtx.activeLib = optionlibs[0]
+      }
     }
   })
 
