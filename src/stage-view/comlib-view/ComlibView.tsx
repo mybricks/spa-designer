@@ -73,7 +73,7 @@ function RenderPanel() {
               lib._visible = false
             }
           } else {
-            if (lib.comAray.find(comDef => comDef.rtType.match(/js/gi))) {
+            if (lib.comAray.find(comDef => comDef.rtType&&comDef.rtType.match(/js/gi))) {
               lib._visible = true
             } else {
               lib._visible = false
