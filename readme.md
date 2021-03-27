@@ -126,7 +126,7 @@ export default function App() {
 
 > 微信 ALJZJZ
 
-![QRCode][./QRCode.jpg]
+<img src="https://raw.githubusercontent.com/mybricks/spa-designer/master/QRCode.jpg"/>
 
 > 邮箱 mybricks@126.com  
 > 权利所有：@MyBricks团队
