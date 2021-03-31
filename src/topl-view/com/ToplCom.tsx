@@ -88,7 +88,7 @@ export default function ToplCom({model}: { model: ToplComModel }) {
   // })
 
   useEffect(() => {
-    model.runtime.topl = model
+    model.runtime.topl = model.forkedFrom || model
 
     if (!model.runtime.title) {
       model.runtime.title = comDef.title

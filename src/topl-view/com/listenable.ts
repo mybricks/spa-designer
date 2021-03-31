@@ -10,6 +10,7 @@
 import {NS_Listenable,} from "@sdk";
 import {ComContext} from "./ToplCom";
 import {copy} from "@utils";
+import ToplComModelForked from "./ToplComModelForked";
 
 export function get(comContext: ComContext): Array<NS_Listenable.T_Listener> {
   const {model, comDef, emitSnap, emitItem, emitMessage} = comContext
@@ -34,12 +35,20 @@ export function get(comContext: ComContext): Array<NS_Listenable.T_Listener> {
       keys: ['ctrl+c'],
       exe: () => {
         let json
+        if (model instanceof ToplComModelForked) {
+          json = model.toJSON()
 
-        json = model.runtime.toJSON()
+          json['_from_'] = {
+            type:'comInDiagram',
+            id: model.forkedFrom.id
+          }
+        } else {
+          json = model.runtime.toJSON()
 
-        json['_from_'] = {
-          type: 'comInDiagram',
-          id: model.id
+          json['_from_'] = {
+            type: 'comInDiagram',
+            id: model.id
+          }
         }
 
         if (copy(JSON.stringify(json))) {
