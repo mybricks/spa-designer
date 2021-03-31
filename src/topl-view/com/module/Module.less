@@ -1,0 +1,65 @@
+/**
+ * MyBricks Opensource
+ * https://mybricks.world
+ * This source code is licensed under the MIT license.
+ *
+ * MyBricks team @2019
+ * mailTo:mybricks@126.com wechatID:ALJZJZ
+ */
+
+@import url('../../theme');
+
+.com {
+  width: 100px;
+  min-height: 80px;
+  border: 1px solid #DDAC8B;
+  //border-radius: 3px;
+  background-color: #FFF6EF;
+  display: flex;
+  cursor: pointer;
+  position: absolute;
+
+  user-select: none;
+  z-index: 1;
+
+  //padding: 0px 2px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .comIcon {
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 16px;
+    }
+  }
+
+  .title {
+    width: 120%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 14px;
+    transform: scale(0.80) translateY(-10%);
+    word-break: break-all;
+
+    > span {
+      color: #c1a049;
+    }
+  }
+
+  .btns {
+    margin: 5px 0px 10px 0;
+
+    button {
+      padding: 3px 10px;
+      border: 1px solid #9EB289;
+      background-color: #FFF;
+      pointer-events: visible;
+      cursor: pointer;
+    }
+  }
+}

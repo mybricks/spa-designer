@@ -17,12 +17,12 @@ import ModuleSeedModel from './ModuleBaseModel'
 
 import {NS_Emits} from './emits'
 
-import {NS_EditorsDefault, ICON_COM_DEFAULT} from './constants'
+import {NS_EditorsDefault, ICON_COM_DEFAULT, NS_XGraphComLib} from './constants'
 
 //-------------------------------------------------------------------------------
 export {BaseModel}
 
-export {DesignerContext, ComSeedModel, ModuleSeedModel, ICON_COM_DEFAULT}
+export {DesignerContext, ComSeedModel, ModuleSeedModel, ICON_COM_DEFAULT, NS_XGraphComLib}
 
 export {NS_EditorsDefault, NS_Configurable, NS_Listenable, NS_Emits}
 

@@ -555,6 +555,24 @@ export default class FrameModel extends ToplBaseModel implements I_FrameModel {
     //   this.outputJoints)
   }
 
+  editDiagram(comId: string, outputHostId?: string) {
+    const com: ToplComModel = this.searchCom(comId)
+    if (!com) {
+      throw new Error(`未找到组件(id=${comId}).`)
+    }
+    const diagram = this.diagramAry.find(diagram => {
+      const sf = diagram.startFrom
+      if (sf.id === comId) {
+        return true
+      }
+    })
+    if (diagram) {
+      this.focusedDiagram = diagram
+    } else {
+      this.addDiagram(com)
+    }
+  }
+
   findPinAryBySchema(one: PinModel): PinModel[] {
     const findOutput = one.isDirectionOfInput()
     const rtn = []
@@ -608,7 +626,7 @@ export default class FrameModel extends ToplBaseModel implements I_FrameModel {
     return rtnPin as PinModel;
   }
 
-  delete(model: ToplComModel | ConModel | PinModel): boolean {
+  delete(model: ToplComModel | ConModel | PinModel | DiagramModel): boolean {
     const delInAry = (ary, delCom?) => {
       let fidx
       ary.find((tm, idx) => {
@@ -645,6 +663,9 @@ export default class FrameModel extends ToplBaseModel implements I_FrameModel {
       if (!delInAry(this.inputPins)) {
         delInAry(this.outputPins)
       }
+    } else if (model instanceof DiagramModel) {
+      model.destroy()
+      delInAry(this.diagramAry)
     }
     return
   }
@@ -813,6 +834,14 @@ export default class FrameModel extends ToplBaseModel implements I_FrameModel {
         cons.push(con.toJSON())
       })
       rtn.conAry = cons
+    }
+
+    if (this.diagramAry.length > 0) {
+      const diagramAry = []
+      this.diagramAry.forEach(diagram => {
+        diagramAry.push(diagram.toJSON())
+      })
+      rtn.diagramAry = diagramAry
     }
 
     return rtn

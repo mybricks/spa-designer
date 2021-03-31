@@ -30,3 +30,11 @@ export namespace NS_EditorsDefault {
 
   export const SCRATCH = 'SCRATCH'
 }
+
+export namespace NS_XGraphComLib {
+  export const id = 'xg-comlib'
+  export const coms = {
+    module: 'xgraph.coms.module',
+    moduleJoiner: 'xgraph.coms.moduleJoiner'
+  }
+}
