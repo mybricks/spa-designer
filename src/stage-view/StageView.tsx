@@ -203,14 +203,15 @@ export default function StageView({content}: { content: {} }) {
     const curModule = model.getCurModule()
 
     if (curModule) {
-      rtn.push(
-        <div key={'adder'} className={css.operators} style={{display: desnContext.isDebugMode() ? 'none' : ''}}>
-          <div className={`${css.adderCom}`}
-               onClick={evt(myContext.showComLibsPanel).stop}>+
+      if (curModule.slot.state.isEnabled() || !desnContext.configs.extPoints?.['toplView']) {
+        rtn.push(
+          <div key={'adder'} className={css.operators} style={{display: desnContext.isDebugMode() ? 'none' : ''}}>
+            <div className={`${css.adderCom}`}
+                 onClick={evt(myContext.showComLibsPanel).stop}>+
+            </div>
           </div>
-        </div>
-      )
-
+        )
+      }
       if (curModule.slot) {
         rtn.push(<GeoView viewModel={curModule.slot} key={curModule.instId + 'slot'}/>)
       }

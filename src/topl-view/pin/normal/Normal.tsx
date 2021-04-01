@@ -95,7 +95,7 @@ export default function Normal({click, mousedown, help}) {
     if (context.isDebugMode()) {
       return false
     }
-    if (model.state.isFocused() && !model.isDirectionOfInput()) {
+    if (model.state.isFocused() && !model.isDirectionOfInput() && context.configs.extPoints?.['toplView']) {
       return true
     }
   })

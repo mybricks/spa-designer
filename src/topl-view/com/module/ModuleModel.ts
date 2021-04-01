@@ -8,7 +8,7 @@
  */
 
 import {I_Node} from 'xgraph.compiler';
-import {Serializable} from 'rxui';
+import {Serializable} from '@mybricks/rxui';
 import {SerializeNS} from '../../constants';
 import {ToplComModel} from "../ToplComModel";
 import {PinModel} from "../../pin/PinModel";

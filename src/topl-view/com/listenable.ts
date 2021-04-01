@@ -58,16 +58,19 @@ export function get(comContext: ComContext): Array<NS_Listenable.T_Listener> {
     }
   ]
 
-  btns.push({
-    title: '删除',
-    keys: ['Backspace'],
-    exe: () => {
-      const snap = emitSnap.start('itemDelete')
-      emitItem.delete(model)
-      emitItem.focus(void 0)
-      snap.commit()
-    }
-  })
+
+  if (!(model instanceof ToplComModelForked) || !(model as ToplComModelForked).isStartInDiagram()) {
+    btns.push({
+      title: '删除',
+      keys: ['Backspace'],
+      exe: () => {
+        const snap = emitSnap.start('itemDelete')
+        emitItem.delete(model)
+        emitItem.focus(void 0)
+        snap.commit()
+      }
+    })
+  }
 
   return btns
 }

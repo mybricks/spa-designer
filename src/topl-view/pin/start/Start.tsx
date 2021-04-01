@@ -81,7 +81,7 @@ export default function Start({click, mousedown, help}) {
     if (context.isDebugMode()) {
       return false
     }
-    if (model.state.isFocused() && !model.isDirectionOfInput()) {
+    if (model.state.isFocused() && !model.isDirectionOfInput() && context.configs.extPoints?.['toplView']) {
       // const ext = getExtension(NS_ExtensionNames.COM_ASSIST)
       // return ext && typeof ext.render === 'function'
       return true
