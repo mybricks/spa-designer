@@ -122,18 +122,34 @@ function EditItem({item}: { item: { id, type: string, title, options,ele,contain
       showTitle = false
     }
 
-    const defaultEditorDesc = defaultEditos(item)
-
-    if (defaultEditorDesc) {
-      showTitle = defaultEditorDesc.showTitle
-      Editor = defaultEditorDesc.render()
-    }
-
-    if (!Editor && typeof myContext.context.configs.editorLoader === 'function') {
+    // 若type相同，外部传入的编辑器覆盖设计器内置的编辑器。
+    if (typeof myContext.context.configs.editorLoader === 'function') {
       Editor = myContext.context.configs.editorLoader({
         type, title, value, options
       })
     }
+
+    if (!Editor) {
+      const defaultEditorDesc = defaultEditos(item)
+
+      if (defaultEditorDesc) {
+        showTitle = defaultEditorDesc.showTitle
+        Editor = defaultEditorDesc.render()
+      }
+    }
+
+    // const defaultEditorDesc = defaultEditos(item)
+
+    // if (defaultEditorDesc) {
+    //   showTitle = defaultEditorDesc.showTitle
+    //   Editor = defaultEditorDesc.render()
+    // }
+
+    // if (!Editor && typeof myContext.context.configs.editorLoader === 'function') {
+    //   Editor = myContext.context.configs.editorLoader({
+    //     type, title, value, options
+    //   })
+    // }
 
     if (Editor && (!ifVisible || ifVisible())) {
       let foldable: boolean = false
