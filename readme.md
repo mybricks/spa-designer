@@ -128,5 +128,7 @@ export default function App() {
 
 <img style="width:60%;height:60%" src="https://raw.githubusercontent.com/mybricks/spa-designer/master/QRCode.jpg"/>
 
+> 如果以上二维码过期，添加作者微信号 ALJZJZ，添加的时候备注mybricks，我将邀请您进入群聊
+
 > 邮箱 mybricks@126.com  
 > 权利所有：@MyBricks团队
