@@ -12,6 +12,7 @@ import {ComContext} from "./ToplCom";
 import {createEdtAry, createEdtItem} from "../util";
 import CfgPin from "./CfgPin";
 import {EDITOR_ROOT_SELECTOR} from "../../constants";
+import ToplComModelForked from "./ToplComModelForked";
 
 export function get(comContext: ComContext, reFocus?: () => any) {
   const {model, comDef, context, emitMessage, emitModule, emitItem, emitSnap} = comContext
@@ -144,18 +145,20 @@ export function get(comContext: ComContext, reFocus?: () => any) {
   comCategary.addGroup(sysGroup)
 
   if (context.isDesnMode()) {
-    sysGroup.addItem(createEdtItem(edtContext, {
-      title: '删除',
-      type: 'button',
-      value: {
-        set(context, val) {
-          const snap = emitSnap.start('itemDelete')
-          emitItem.delete(model)
-          emitItem.focus(void 0)
-          snap.commit()
+    if (!(model instanceof ToplComModelForked) || !(model as ToplComModelForked).isStartInDiagram()) {
+      sysGroup.addItem(createEdtItem(edtContext, {
+        title: '删除',
+        type: 'button',
+        value: {
+          set(context, val) {
+            const snap = emitSnap.start('itemDelete')
+            emitItem.delete(model)
+            emitItem.focus(void 0)
+            snap.commit()
+          }
         }
-      }
-    }))
+      }))
+    }
   }
 
   return rtn;
