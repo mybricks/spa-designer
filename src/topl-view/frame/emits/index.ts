@@ -26,6 +26,7 @@ import {COM_EDITOR_KEYS, PinExtInputs} from "../../config";
 import {getEditContext} from "../../com/configrable";
 
 import pasteNormal, {doToplProps} from './pasteNormal'
+import ToplComModelForked from "../../com/ToplComModelForked";
 
 export function initEmitIOEditor({context, frameModel, emitItem}: ToplViewContext): NS_Emits.IOEditor {
   return {
@@ -203,8 +204,18 @@ export function initEmitComponent(tvContext: ToplViewContext): NS_Emits.Componen
 
           const lp = getLayoutParent(comModel)
 
-          comModel.destroy()
-          lp.connections.changed()
+          if (comModel instanceof ToplComModelForked) {//del in diagram
+            comModel.destroy()
+            lp.connections.changed()
+          } else {
+            const diagram = frameModel.searchDiagramByStartCom(comModel)
+            if (diagram) {
+              frameModel.delete(diagram)
+            }
+
+            comModel.destroy()
+            lp.connections.changed()
+          }
         } else {
           model.destroy()
         }
