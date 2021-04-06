@@ -19,10 +19,13 @@ import {JointModel} from "../topl-view/joint/JointModel";
 import {ToplComModel} from '../topl-view/com/ToplComModel'
 
 import {ComContext as ToplComContext} from "../topl-view/com/ToplCom";
+import {ComSeedModel, DesignerContext, NS_Emits} from "@sdk";
 
 export const _ExtSupports = {
   NS_Configurable,
   NS_Listenable,
+  NS_Emits,
+  DesignerContext,
   ToplViewContext,
   FrameModel,
   DiagramModel,
@@ -33,7 +36,8 @@ export const _ExtSupports = {
   PinExtInputs,
   PinModel,
   JointModel,
-  ConModel, ConView, Con
+  ConModel, ConView, Con,
+  ComSeedModel
 }
 
 // export namespace _ExtSupports1 {
