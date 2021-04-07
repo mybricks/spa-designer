@@ -24,7 +24,7 @@ module.exports = merge(commonCfg,{
     'React': 'React',
     'react': 'React',
     'react-dom': 'react-dom',
-    '@mybricks/rxui': '@mybricks/rxui',
+    '@mybricks/rxui': 'rxui',
     'antd': 'antd',
     'blockly': 'Blockly',
     'blocks': 'blocks',

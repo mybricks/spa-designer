@@ -10,4 +10,4 @@ document.body.appendChild(parent)
 //   }
 // )
 
-render(App, parent)
+render(<App />, parent)

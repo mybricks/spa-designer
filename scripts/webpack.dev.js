@@ -14,7 +14,7 @@ module.exports = merge(commonCfg, {
     'react': 'React',
     'react-dom': 'ReactDOM',
     // 'rxui': 'rxui',
-    '@mybricks/rxui': '@mybricks/rxui',
+    '@mybricks/rxui': 'rxui',
     'antd': 'antd',
     'blockly': 'Blockly',
     'blocks': 'blocks',
@@ -28,6 +28,7 @@ module.exports = merge(commonCfg, {
       //'@visualbricks/designer': require('path').resolve(__dirname, '../dist/index.js'),
       '@sdk': require('path').resolve(__dirname, '../src/sdk.ts'),
       '@utils': require('path').resolve(__dirname, '../src/utils/index.ts'),
+      '@mybricks/spa-designer': require('path').resolve(__dirname, '../src/index.ts'),
     }
   },
   devServer: {

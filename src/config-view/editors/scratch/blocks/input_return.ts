@@ -74,12 +74,12 @@ export default {
       if (matchOut) {//output
         const outHostId = matchOut[1]
         return `
-          ${logDebug}("返回到输出项${outHostId}: ${rtn}")
+          ${logDebug}(\`返回到输出项${outHostId}: ${rtn}\`)
           ${outHostId}(${rtn});
         `
       } else {
         return `
-          ${logDebug}("返回到当前输入项: ${rtn}")
+          ${logDebug}(\`返回到当前输入项: ${rtn}\`)
           ${VAR_OUTPUT}(${rtn});
         `
       }
