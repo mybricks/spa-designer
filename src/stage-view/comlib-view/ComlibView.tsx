@@ -345,7 +345,11 @@ function renderComItem(lib, com, myCtx: MyContext) {
            click(lib, com)
          })}>
       <div className={css.title}>
-        <div className={css.comIconFallback}>{com.title?.substr(0, 1)}</div>
+        {com.icon === './icon.png' || !/^(https:)/.test(com.icon) ? (
+          <div className={css.comIconFallback}>{com.title?.substr(0, 1)}</div>
+        ) : (
+          <div className={css.comIcon} style={{ backgroundImage: `url(${com.icon})` }}/>
+        )}
         <span className={css.comText}>{com.title}</span>
       </div>
     </div>
