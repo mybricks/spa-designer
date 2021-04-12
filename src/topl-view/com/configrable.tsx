@@ -111,7 +111,7 @@ export function get(comContext: ComContext, reFocus?: () => any) {
 
   if (context.isDesnMode()) {
     const ary = createEdtAry(comContext.comDef, getEditContext(comContext),
-      {[EDITOR_ROOT_SELECTOR]: true}, reFocus);
+      {[EDITOR_ROOT_SELECTOR]: true, '*': true}, reFocus);
     if (ary) {
       const edtGroup = new NS_Configurable.Group()
       edtGroup.addItems(ary)

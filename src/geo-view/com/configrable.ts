@@ -214,7 +214,7 @@ export function get(comContext: ComContext) {
     comGroup = new NS_Configurable.Group();
     comCategary.addGroup(comGroup)
 
-    const edtAry = createEdtAry(comContext, hostEle, hostEle, {[EDITOR_ROOT_SELECTOR]: true})
+    const edtAry = createEdtAry(comContext, hostEle, hostEle, {[EDITOR_ROOT_SELECTOR]: true, '*': true})
     if (edtAry) {
       const [ary, zoneTitle] = edtAry
 
